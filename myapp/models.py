@@ -3,7 +3,7 @@ from myapp import db, login_manager
 from werkzeug.security import generate_password_hash, check_password_hash
 #allows to set up isAuthenticate etc 
 from flask_login import UserMixin
-from datetime import datetime
+from datetime import datetime, timedelta
 
 #login management 
 # allows us to use this in templates for isUser stuff 
@@ -18,6 +18,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(64), unique=True, index=True)
     username = db.Column(db.String(64), unique=True, index=True)
     password_hash = db.Column(db.String(128))
+    cookouts = db.relationship('Cookout', backref='author', lazy=True)
 
     def __init__(self, email, username, password):
         self.email = email
@@ -34,8 +35,19 @@ class User(db.Model, UserMixin):
 class Cookout(db.Model):
     __tablename__ = 'cookouts'
     id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.DateTime, nullable=False, default=datetime.datetime.now() + datetime.timedelta(days=7))
+    date = db.Column(db.DateTime, nullable=False, default=datetime.now())
     name = db.Column(db.String(100), nullable=False)
-    creator = db.Column(db.Integer, db.ForeignKey('users.Id'), nullable=False)
+    creator = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     location = db.Column(db.String(150))
-    food = db.Column(db.List)
+    food = db.Column(db.String)
+    drink = db.Column(db.String)
+    attendees = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    def __init__(self, name, date, creator, location, food, drink, attendees):
+        self.name = name
+        self.date = date
+        self.creator = creator
+        self.location = location
+        self.food = food
+        self.drink = drink
+        self.attendees = attendees
