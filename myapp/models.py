@@ -38,6 +38,7 @@ class Cookout(db.Model):
     date = db.Column(db.DateTime, nullable=False, default=datetime.now())
     name = db.Column(db.String(100), nullable=False)
     creator = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    description = db.Column(db.Text)
     location = db.Column(db.String(150))
     food = db.Column(db.String)
     drink = db.Column(db.String)

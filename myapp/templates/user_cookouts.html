@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">
+        <div class="jumbotron">
+            <div align="center">
+                <h1>Welcome to the page for {{user.username}}</h1>
+            </div>
+        </div>
+    {% for post in cookouts.items %}
+    <h2>
+        <a href="{{url_for('cookouts.cookout', cookout_id=cookout.id)}}">{{cookout.name}}</a>
+    </h2>
+    Written By: <a href="{{url_for('users.cookouts', username=cookout.creator.username)}}">{{cookout.creator.username}}</a>
+
+    <p class="text-muted">
+        Scheduled For: {{post.date.strftime("%y-%m-%d")}}
+    </p>
+    <br>
+    <p>{{cookout.description}}</p>
+    <br>
+    {% endfor %}
+    </div>
+
+    <nav aria-label="Page Navigation example">
+        <ul class="pagination justify-content-center">
+
+            {% for page_num in cookouts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                {% if cookouts.page == page_num %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="{{url_for('users.cookouts', username=user.username, page=page_num)}}">{{ page_num }}</a>
+                </li>
+                {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="{{url_for('users.cookouts', username=user.username, page=page_num)}}">{{ page_num }}</a>
+                </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
+
+
+{% endblock %}
