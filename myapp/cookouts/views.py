@@ -23,7 +23,7 @@ def create_cookout():
 @cookouts.route('/<int:cookout_id>')
 def cookout(cookout_id):
     cookout = Cookout.query.get_or_404(cookout_id) 
-    return render_template('cookout.html', name=cookout.name, date=cookout.date, description=cookout.description, creator=cookout.creator, location=cookout.location, food=cookout.food, drink=cookout.drink, attendees=cookout.attendees)
+    return render_template('cookout.html', name=cookout.name, date=cookout.date, description=cookout.description, creator=cookout.creator, location=cookout.location, food=cookout.food, drink=cookout.drink, attendees=cookout.attendees, cookout=cookout)
 
 @cookouts.route('/<int:cookout_id>/update',methods=['GET','POST'])
 @login_required
