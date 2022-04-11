@@ -6,14 +6,14 @@
                 <h1>Welcome to the page for {{user.username}}</h1>
             </div>
         </div>
-    {% for post in cookouts.items %}
+    {% for cookout in cookouts.items %}
     <h2>
         <a href="{{url_for('cookouts.cookout', cookout_id=cookout.id)}}">{{cookout.name}}</a>
     </h2>
     Written By: <a href="{{url_for('users.cookouts', username=cookout.creator.username)}}">{{cookout.creator.username}}</a>
 
     <p class="text-muted">
-        Scheduled For: {{post.date.strftime("%y-%m-%d")}}
+        Scheduled For: {{cookout.date.strftime("%m/%d/%Y, %H:%M:%S")}}
     </p>
     <br>
     <p>{{cookout.description}}</p>

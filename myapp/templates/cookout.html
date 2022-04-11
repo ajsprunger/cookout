@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+  <h1>{{ cookout.name }}</h1>
+  <h2>Created by: {{cookout.creator.username}}</h2>
+  <h3>Date: {{ cookout.date.strftime('%m/%d/%Y, %H:%M:%S') }}</h3>
+  <p>{{cookout.description}}</p>
+  <p>Location: {{cookout.location}}</p>
+  <p>Food: {{cookout.food}}</p>
+  <p>Drink: {{cookout.drink}}</p>
+  <p>Attendees: {{cookout.attendees}}</p>
+  {% if cookout.author == current_user %}
+    <div>
+      <a class="btn btn-secondary" href="{{ url_for('cookouts.update', cookout_id=cookout.id) }}">Update</a>
+      <br>
+      <form action="{{ url_for('cookouts.delete_cookout', cookout_id=cookout.id) }}" method="POST">
+        <input class="btn btn-danger" type="submit" value="Delete">
+      </form>
+    </div>
+  {% endif %}
+</div>
+{% endblock content %}

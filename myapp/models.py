@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(64), unique=True, index=True)
     username = db.Column(db.String(64), unique=True, index=True)
     password_hash = db.Column(db.String(128))
-    cookouts = db.relationship('Cookout', backref='author', lazy=True)
+    created_cookouts = db.relationship('Cookout', backref='creator', lazy=True)
 
     def __init__(self, email, username, password):
         self.email = email
@@ -35,19 +35,20 @@ class User(db.Model, UserMixin):
 class Cookout(db.Model):
     __tablename__ = 'cookouts'
     id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.DateTime, nullable=False, default=datetime.now())
+    date = db.Column(db.String, nullable=False, default=datetime.now())
     name = db.Column(db.String(100), nullable=False)
-    creator = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    creator_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     description = db.Column(db.Text)
     location = db.Column(db.String(150))
     food = db.Column(db.String)
     drink = db.Column(db.String)
-    attendees = db.Column(db.Integer, db.ForeignKey('users.id'))
+    attendees = db.Column(db.Integer)
 
-    def __init__(self, name, date, creator, location, food, drink, attendees):
+    def __init__(self, name, date, creator_id, description, location, food, drink, attendees):
         self.name = name
         self.date = date
-        self.creator = creator
+        self.creator_id = creator_id
+        self.description = description
         self.location = location
         self.food = food
         self.drink = drink
