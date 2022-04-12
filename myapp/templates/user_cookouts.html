@@ -13,7 +13,7 @@
   Written By: <a href="{{url_for('users.user_cookouts', username=cookout.creator.username)}}">{{cookout.creator.username}}</a>
 
   <p class="text-muted">
-    Scheduled For: {{cookout.date.strftime("%m/%d/%Y, %H:%M:%S")}}
+    Scheduled For: {{cookout.date.strftime("%m/%d/%Y, %I:%M %p")}}
   </p>
   <br>
   <p>{{cookout.description}}</p>

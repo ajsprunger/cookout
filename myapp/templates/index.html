@@ -11,7 +11,7 @@
                         <a class="card-title" href="{{url_for('cookouts.cookout', cookout_id=cookout.id)}}">{{cookout.name}}</a>
                         <a href="{{url_for('users.user_cookouts', username=cookout.creator.username)}}">Created by: {{cookout.creator.username}}</a>
                     </h2>
-                    <p>Scheduled for: {{cookout.date.strftime('%m/%d/%Y, %H:%M:%S')}}</p>
+                    <p>Scheduled for: {{cookout.date.strftime('%m/%d/%Y, %I:%M %p')}}</p>
                     <a class="btn btn-primary" href="{{url_for('cookouts.cookout', cookout_id=cookout.id)}}">View Cookout</a>
                 </div>
             </div>

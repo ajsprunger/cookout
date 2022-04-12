@@ -35,7 +35,7 @@ class User(db.Model, UserMixin):
 class Cookout(db.Model):
     __tablename__ = 'cookouts'
     id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.String, nullable=False, default=datetime.now())
+    date = db.Column(db.DateTime, nullable=False, default=datetime.now())
     name = db.Column(db.String(100), nullable=False)
     creator_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     description = db.Column(db.Text)
