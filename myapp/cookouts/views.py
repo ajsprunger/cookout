@@ -9,7 +9,6 @@ cookouts = Blueprint('cookouts', __name__)
 @cookouts.route('/create', methods=['GET', 'POST'])
 @login_required
 def create_cookout():
-    print('create test')
     form = CookoutForm()
     if form.validate_on_submit():
         cookout = Cookout(name=form.name.data, date=form.date.data, creator_id=current_user.id, description=form.description.data, location=form.location.data, food=form.food.data, drink=form.drink.data, attendees=form.attendees.data)
@@ -23,7 +22,8 @@ def create_cookout():
 @cookouts.route('/<int:cookout_id>')
 def cookout(cookout_id):
     cookout = Cookout.query.get_or_404(cookout_id) 
-    return render_template('cookout.html', name=cookout.name, date=cookout.date, description=cookout.description, creator=cookout.creator, location=cookout.location, food=cookout.food, drink=cookout.drink, attendees=cookout.attendees, cookout=cookout)
+    print('COOKOUT', cookout.id)
+    return render_template('cookout.html', name=cookout.name, date=cookout.date, description=cookout.description, creator=cookout.creator, location=cookout.location, food=cookout.food, drink=cookout.drink, attendees=cookout.attendees, post=cookout)
 
 @cookouts.route('/<int:cookout_id>/update',methods=['GET','POST'])
 @login_required
@@ -44,6 +44,7 @@ def update(cookout_id):
         flash('Cookout Updated')
         return redirect(url_for('cookouts.cookout',cookout_id=cookout.id))
     elif request.method == 'GET':
+        print('elif 50')
         form.name.data = cookout.name
         form.description.data = cookout.description
         form.date.data = cookout.date
@@ -55,9 +56,11 @@ def update(cookout_id):
 
 @cookouts.route('/<int:cookout_id>/delete',methods=['GET','POST'])
 @login_required
-def delete_post(cookout_id):
+def delete_cookout(cookout_id):
+    print('delete 61')
     cookout = Cookout.query.get_or_404(cookout_id)
     if cookout.creator != current_user:
+        print('delete if')
         abort(403)
     db.session.delete(cookout)
     db.session.commit()
