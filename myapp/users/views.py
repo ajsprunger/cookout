@@ -73,6 +73,6 @@ def account():
 @users.route('/<username>')
 def user_cookouts(username):
   page = request.args.get('page', 1, type= int)
-  user = User.query.filter_by(username=username).first_or_404
+  user = User.query.filter_by(username=username).first_or_404()
   cookouts = Cookout.query.filter_by(creator=user).order_by(Cookout.date.desc()).paginate(page=page, per_page=5)
   return render_template('user_cookouts.html', cookouts=cookouts, user=user)

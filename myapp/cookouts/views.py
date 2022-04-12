@@ -29,7 +29,7 @@ def cookout(cookout_id):
 @login_required
 def update(cookout_id):
     cookout = Cookout.query.get_or_404(cookout_id)
-    if cookout.author != current_user:
+    if cookout.creator != current_user:
         abort(403)
     form = CookoutForm()
     if form.validate_on_submit():
@@ -44,23 +44,20 @@ def update(cookout_id):
         flash('Cookout Updated')
         return redirect(url_for('cookouts.cookout',cookout_id=cookout.id))
     elif request.method == 'GET':
-        print('elif 50')
         form.name.data = cookout.name
         form.description.data = cookout.description
         form.date.data = cookout.date
         form.location.data = cookout.location
         form.food.data = cookout.food
         form.drink.data = cookout.drink
-        form.attendees = cookout.attendees
+        form.attendees.data = cookout.attendees
     return render_template('create_cookout.html',title='Updating',form=form)
 
 @cookouts.route('/<int:cookout_id>/delete',methods=['GET','POST'])
 @login_required
 def delete_cookout(cookout_id):
-    print('delete 61')
     cookout = Cookout.query.get_or_404(cookout_id)
     if cookout.creator != current_user:
-        print('delete if')
         abort(403)
     db.session.delete(cookout)
     db.session.commit()

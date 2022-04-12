@@ -10,4 +10,4 @@ class CookoutForm(FlaskForm):
     food = StringField('Food')
     drink = StringField('Drink')
     attendees = StringField('Attendees')
-    submit = SubmitField('Post')
+    submit = SubmitField('Create')

@@ -42,7 +42,7 @@ class Cookout(db.Model):
     location = db.Column(db.String(150))
     food = db.Column(db.String)
     drink = db.Column(db.String)
-    attendees = db.Column(db.Integer)
+    attendees = db.Column(db.String)
 
     def __init__(self, name, date, creator_id, description, location, food, drink, attendees):
         self.name = name
