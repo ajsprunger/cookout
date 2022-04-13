@@ -13,9 +13,9 @@ class CookoutForm(FlaskForm):
 
 class FoodForm(FlaskForm):
     name = StringField('Add Food', validators=[DataRequired()])
-    submit = SubmitField('Create')
+    submit = SubmitField('Add')
 
 class DrinkForm(FlaskForm):
     name = StringField('Add Drink', validators=[DataRequired()])
-    submit = SubmitField('Create')
+    submit = SubmitField('Add')
 

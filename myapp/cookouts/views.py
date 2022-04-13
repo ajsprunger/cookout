@@ -24,20 +24,19 @@ def cookout(cookout_id):
     cookout = Cookout.query.get_or_404(cookout_id)
     food_form = FoodForm()
     drink_form = DrinkForm()
-    if food_form.validate_on_submit():
+    if  food_form.validate_on_submit() and request.form['submit'] == 'Add Food':
         food = Food(name=food_form.name.data, provider_id=current_user.id, event_id=cookout.id) 
         food.name = food_form.name.data
         db.session.add(food)
         db.session.commit()
         flash('Food Added')
         return redirect(url_for('cookouts.cookout',cookout_id=cookout.id))
-    if drink_form.validate_on_submit():
+    if drink_form.validate_on_submit() and request.form['submit'] == 'Add Drink':
         drink = Drink(name=drink_form.name.data, provider_id=current_user.id, event_id=cookout.id) 
         drink.name = drink_form.name.data
         db.session.add(drink)
         db.session.commit()
         flash('Drink Added')
-        print('DRINK ADDING SHOULD WORK SINCE FOOD ADDING DOES')
         return redirect(url_for('cookouts.cookout',cookout_id=cookout.id))
     return render_template('cookout.html', name=cookout.name, date=cookout.date, description=cookout.description, creator=cookout.creator, location=cookout.location, attendees=cookout.attendees, post=cookout, food=cookout.food, drink=cookout.drink, food_form=food_form, drink_form=drink_form)
 
