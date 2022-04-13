@@ -19,6 +19,8 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(64), unique=True, index=True)
     password_hash = db.Column(db.String(128))
     created_cookouts = db.relationship('Cookout', backref='creator', lazy=True)
+    provided_food = db.relationship('Food', backref='provider', lazy=True)
+    provided_food = db.relationship('Drink', backref='provider', lazy=True)
 
     def __init__(self, email, username, password):
         self.email = email
@@ -40,8 +42,8 @@ class Cookout(db.Model):
     creator_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     description = db.Column(db.Text)
     location = db.Column(db.String(150))
-    food = db.Column(db.String)
-    drink = db.Column(db.String)
+    food = db.relationship('Food', backref='event', lazy=True)
+    drink = db.relationship('Drink', backref='event', lazy=True)
     attendees = db.Column(db.String)
 
     def __init__(self, name, date, creator_id, description, location, food, drink, attendees):
@@ -53,3 +55,30 @@ class Cookout(db.Model):
         self.food = food
         self.drink = drink
         self.attendees = attendees
+
+class Food(db.Model):
+    __tablename__ = 'foods'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
+    provider_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    event_id = db.Column(db.Integer, db.ForeignKey('cookouts.id'), nullable=False)
+
+    def __init__(self, name, provider_id, event_id):
+        self.name = name
+        self.provider_id = provider_id
+        self.event_id = event_id
+
+
+class Drink(db.Model):
+    __tablename__ = 'drinks'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
+    provider_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    event_id = db.Column(db.Integer, db.ForeignKey('cookouts.id'), nullable=False)
+    
+    def __init__(self, name, provider_id, event_id):
+        self.name = name
+        self.provider_id = provider_id
+        self.event_id = event_id
+
+

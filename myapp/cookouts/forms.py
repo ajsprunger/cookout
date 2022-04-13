@@ -8,7 +8,14 @@ class CookoutForm(FlaskForm):
     description = TextAreaField('Description')
     date = DateTimeLocalField('Date/Time', format="%Y-%m-%dT%H:%M", validators=[DataRequired()])
     location = StringField('Location')
-    food = StringField('Food')
-    drink = StringField('Drink')
     attendees = StringField('Attendees')
     submit = SubmitField('Create')
+
+class FoodForm(FlaskForm):
+    name = StringField('Add Food', validators=[DataRequired()])
+    submit = SubmitField('Create')
+
+class DrinkForm(FlaskForm):
+    name = StringField('Add Drink', validators=[DataRequired()])
+    submit = SubmitField('Create')
+

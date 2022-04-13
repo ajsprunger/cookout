@@ -19,5 +19,27 @@
   </form>
 </div>
 {% endif %}
+<div class="container">
+  <form name="food_form" class="form-group" method="POST">
+      {{food_form.hidden_tag()}}
+      <div class="form-group">
+        {{food_form.name.label(class="form-control-label")}}
+        {{food_form.name(class="form-control form-control-lg")}}
+    <div class="form-group">
+        {{food_form.submit(class="btn btn-outline-info", value="Add")}}
+    </div>
+  </form>
+</div>
+<div class="container">
+  <form name="drink_form" class="form-group" method="POST">
+      {{drink_form.hidden_tag()}}
+      <div class="form-group">
+        {{drink_form.name.label(class="form-control-label")}}
+        {{drink_form.name(class="form-control form-control-lg")}}
+    <div class="form-group">
+        {{drink_form.submit(class="btn btn-outline-info", value="Add")}}
+    </div>
+  </form>
+</div>
 
 {% endblock content %}
