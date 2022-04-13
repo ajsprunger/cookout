@@ -46,14 +46,12 @@ class Cookout(db.Model):
     drink = db.relationship('Drink', backref='event', lazy=True)
     attendees = db.Column(db.String)
 
-    def __init__(self, name, date, creator_id, description, location, food, drink, attendees):
+    def __init__(self, name, date, creator_id, description, location, attendees):
         self.name = name
         self.date = date
         self.creator_id = creator_id
         self.description = description
         self.location = location
-        self.food = food
-        self.drink = drink
         self.attendees = attendees
 
 class Food(db.Model):

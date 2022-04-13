@@ -11,7 +11,7 @@ cookouts = Blueprint('cookouts', __name__)
 def create_cookout():
     form = CookoutForm()
     if form.validate_on_submit():
-        cookout = Cookout(name=form.name.data, date=form.date.data, creator_id=current_user.id, description=form.description.data, location=form.location.data, food=form.food.data, drink=form.drink.data, attendees=form.attendees.data)
+        cookout = Cookout(name=form.name.data, date=form.date.data, creator_id=current_user.id, description=form.description.data, location=form.location.data, attendees=form.attendees.data)
         db.session.add(cookout)
         db.session.commit()
         flash('Cookout Created')
@@ -52,8 +52,6 @@ def update(cookout_id):
         cookout.description = form.description.data
         cookout.date = form.date.data
         cookout.location = form.location.data
-        cookout.food = form.food.data
-        cookout.drink = form.drink.data
         cookout.attendees = form.attendees.data
         db.session.commit()
         flash('Cookout Updated')
@@ -63,8 +61,6 @@ def update(cookout_id):
         form.description.data = cookout.description
         form.date.data = cookout.date
         form.location.data = cookout.location
-        form.food.data = cookout.food
-        form.drink.data = cookout.drink
         form.attendees.data = cookout.attendees
     return render_template('create_cookout.html',title='Updating',form=form)
 
