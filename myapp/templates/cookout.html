@@ -8,11 +8,11 @@
   <p>Location: {{location}}</p>
   <p>Foods:</p>
   {% for food in post.food %}
-    <p>{{food.name}}</p>
+    <p>{{food.provider.username}} - {{food.name}}</p>
   {% endfor %}
   <p>Drinks:</p>
   {% for drink in post.drink %}
-  <p>{{drink.name}}</p>
+  <p>{{drink.provider.username}} - {{drink.name}}</p>
 {% endfor %}
   <p>Attendees: {{attendees}}</p>
 </div>

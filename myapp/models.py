@@ -20,7 +20,7 @@ class User(db.Model, UserMixin):
     password_hash = db.Column(db.String(128))
     created_cookouts = db.relationship('Cookout', backref='creator', lazy=True)
     provided_food = db.relationship('Food', backref='provider', lazy=True)
-    provided_food = db.relationship('Drink', backref='provider', lazy=True)
+    provided_drink = db.relationship('Drink', backref='provider', lazy=True)
 
     def __init__(self, email, username, password):
         self.email = email
@@ -75,7 +75,7 @@ class Drink(db.Model):
     name = db.Column(db.String(50), nullable=False)
     provider_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     event_id = db.Column(db.Integer, db.ForeignKey('cookouts.id'), nullable=False)
-    
+
     def __init__(self, name, provider_id, event_id):
         self.name = name
         self.provider_id = provider_id
