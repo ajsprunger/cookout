@@ -1,14 +1,16 @@
+<link rel="stylesheet" href="../static/css/account.css">
 {% extends "base.html" %}
 {% block content %}
    
 <div class="jumbotron">
     <div align="center">
-        <h1>Welcome to the page for {{current_user.username}}</h1>
+        <h1>Account for {{current_user.username}}</h1>
     </div>
 </div>
 
 <div class="container">
-    <form method="POST" action="" enctype="multipart/form-data">
+    <form class="form-group" method="POST" action="" enctype="multipart/form-data">
+      <div class="inputs">
         <div class="form-group">
             {{form.hidden_tag()}}
         </div>
@@ -20,12 +22,10 @@
             {{form.email.label(class='form-group')}} 
             {{form.email(class='form-control')}}
         </div>
-      
-        <div class="form-group">
+      </div>
+        <div class="form-group button">
             {{form.submit(class='btn btn-primary')}}
         </div>
-       
-       
     </form>
 </div>
 {% endblock %}
