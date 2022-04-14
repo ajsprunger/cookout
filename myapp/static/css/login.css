@@ -1,0 +1,30 @@
+.jumbotron {
+  text-align: center;
+  background-color: white;
+  margin: 10px auto;
+  border-radius: 5px;
+  width: 150px;
+  padding-bottom: 5px;
+}
+
+.form-group {
+  margin: 5px;
+}
+
+.inputs {
+  background-color: white;
+  border-radius: 5px;
+  width: 70%;
+  margin: auto;
+  padding: 5px;
+}
+
+.form-control {
+  height: 1.7rem;
+  align-self: center;
+  border-radius: 5px;
+}
+
+.button {
+  margin-left: 15px;
+}
