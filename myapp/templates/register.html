@@ -1,13 +1,17 @@
 <link rel="stylesheet" href="../static/css/register.css">
 {% extends "base.html" %}
 {% block content %}
-   
+<h1 class="jumbotron">Register</h1>
 <form method="POST">
+  <div class="inputs">
     {{form.hidden_tag()}}
-    {{form.email.label}}{{form.email}}<br>
-    {{form.username.label}}{{form.username}}<br>
-    {{form.password.label}}{{form.password}}<br>
-    {{form.pass_confirm.label}}{{form.pass_confirm}}<br>
-    {{form.submit()}}
+    {{form.email.label (class='form-group')}}{{form.email (class='form-control')}}<br>
+    {{form.username.label (class='form-group')}}{{form.username (class='form-control')}}<br>
+    {{form.password.label (class='form-group')}}{{form.password (class='form-control')}}<br>
+    {{form.pass_confirm.label (class='form-group')}}{{form.pass_confirm (class='form-control')}}<br>
+  </div>
+  <div class="button">
+    {{form.submit(class='btn btn-primary')}}
+  </div>
 </form>
 {% endblock %}
