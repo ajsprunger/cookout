@@ -1,25 +1,23 @@
+<link rel="stylesheet" href="../static/css/user.css">
 {% extends "base.html" %}
 {% block content %}
-  <div class="container">
-    <div class="jumbotron">
-        <div align="center">
-            <h1>Welcome to the page for {{user.username}}</h1>
-        </div>
-    </div>
-  {% for cookout in cookouts.items %}
-  <h2>
-    <a href="{{url_for('cookouts.cookout', cookout_id=cookout.id)}}">{{cookout.name}}</a>
-  </h2>
-  Written By: <a href="{{url_for('users.user_cookouts', username=cookout.creator.username)}}">{{cookout.creator.username}}</a>
-
-  <p class="text-muted">
-    Scheduled For: {{cookout.date.strftime("%m/%d/%Y, %I:%M %p")}}
-  </p>
-  <br>
-  <p>{{cookout.description}}</p>
-  <br>
-  {% endfor %}
+<div class="jumbotron">
+  <div align="center">
+    <h1>Welcome to the page for {{user.username}}</h1>
   </div>
+</div>
+<div class="container">
+  {% for cookout in cookouts.items %}
+  <div class="card">
+    <a href="{{url_for('cookouts.cookout', cookout_id=cookout.id)}}"><span class="link-span"></span></a>
+      <div class="car-boy">
+        <p class="card-title">{{cookout.name}}</p>
+        <br>
+        <p>{{cookout.date.strftime('%m/%d/%Y, %I:%M %p')}}</p>
+      </div>
+    </div>
+  {% endfor %}
+</div>
 
   <nav aria-label="Page Navigation example">
     <ul class="pagination justify-content-center">
