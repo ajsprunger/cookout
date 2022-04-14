@@ -63,3 +63,8 @@
   padding: 5px;
 }
 
+.form-control {
+  height: 1.7rem;
+  align-self: center;
+  border-radius: 5px;
+}
