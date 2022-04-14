@@ -2,21 +2,25 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  background-image: url('../images/tablecloth.jpg');
 }
 
 .container {
   max-width: 1050px;
-  width: 90%;
+  width: 100%;
   margin: auto;
 }
 
 .navbar {
   width: 100%;
   box-shadow: 0 1px 4px rgb(146 161 176 / 15%);
+  background-color: white;
 }
 
 .nav-container {
@@ -24,6 +28,7 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 62px;
+  padding: none;
 }
 
 .navbar .menu-items {
@@ -38,8 +43,8 @@ body {
 .navbar .nav-container a {
   text-decoration: none;
   color: #0e2431;
-  font-weight: 500;
-  font-size: 1.2rem;
+  font-weight: 1000;
+  font-size: 1.5rem;
   padding: 0.7rem;
 }
 
@@ -127,7 +132,7 @@ body {
 .logo {
   position: absolute;
   top: 15px;
-  right: 2px;
+  right: 8px;
   font-size: 1.2rem;
   color: #0e2431;
 }
@@ -150,4 +155,65 @@ body {
 
 .nav-container input[type="checkbox"]:checked ~ .logo{
   display: none;
+}
+
+.nav-link {
+  font-weight: 700;
+}
+
+.btn {
+  align-items: center;
+  background-color: white;
+  background-position: 0 0;
+  border: 1px solid white;
+  border-radius: 11px;
+  box-sizing: border-box;
+  color: #D33A2C;
+  cursor: pointer;
+  display: flex;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 33.4929px;
+  padding: 2px 12px;
+  text-align: left;
+  text-decoration: none;
+  transition: border .2s ease-in-out,box-shadow .2s ease-in-out;
+  touch-action: manipulation;
+  white-space: nowrap;
+  margin: 5px;
+}
+
+.btn:active,
+.btn:hover,
+.btn:focus {
+  outline: 0;
+}
+
+
+.btn:active {
+  background-color: #D33A2C;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset;
+  color: #FFFFFF;
+}
+
+.btn:hover {
+  background-color: white;
+  border-color: white;
+}
+
+.btn:active:hover,
+.btn:focus:hover,
+.btn:focus {
+  background-color: #D33A2C;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset;
+  color: #FFFFFF;
+}
+
+.page-item {
+  padding: 3px;
+  list-style-type: none;
+  border: 1px solid black;
+  margin-top: 10px;
+  text-align: center;
+  background-color: white;
 }

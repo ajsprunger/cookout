@@ -1,26 +1,31 @@
+<link rel="stylesheet" href="../static/css/cookout.css">
 {% extends "base.html" %}
 {% block content %}
 <div class="jumbotron">
-  <h1>{{ name }}</h1>
-  <h2>Created by: {{post.creator.username}}</h2>
-  <h3>Date: {{ date.strftime('%m/%d/%Y, %I:%M %p') }}</h3>
-  <p>{{description}}</p>
-  <p>Location: {{location}}</p>
-  <p>Foods:</p>
-  {% for food in post.food %}
-    <p>{{food.provider.username}} - {{food.name}}</p>
-  {% endfor %}
-  <p>Drinks:</p>
-  {% for drink in post.drink %}
-  <p>{{drink.provider.username}} - {{drink.name}}</p>
-{% endfor %}
-  <p>Attendees: {{attendees}}</p>
+  <div class="page-top">
+    <h1 class="title">{{ name }}</h1>
+    <p class="date">{{ date.strftime('%m/%d/%Y, %I:%M %p') }}</p>
+  </div>
+  <div class="content">
+    <p>{{description}}</p>
+    <p>Hosted by: {{post.creator.username}}</p>
+    <p>Location: {{location}}</p>
+    <p>Foods:</p>
+    {% for food in post.food %}
+      <p>{{food.provider.username}} - {{food.name}}</p>
+    {% endfor %}
+    <p>Drinks:</p>
+    {% for drink in post.drink %}
+    <p>{{drink.provider.username}} - {{drink.name}}</p>
+    {% endfor %}
+    <p>Attendees: {{attendees}}</p>
+  </div>
 </div>
 {% if post.creator == current_user %}
-<div>
+<div class="up-del">
   <a class="btn btn-secondary" href="{{ url_for('cookouts.update', cookout_id=post.id) }}">Update</a>
   <br>
-  <form action="{{ url_for('cookouts.delete_cookout', cookout_id=post.id) }}" method="POST">
+  <form class="del" action="{{ url_for('cookouts.delete_cookout', cookout_id=post.id) }}" method="POST">
     <input class="btn btn-danger" type="submit" value="Delete">
   </form>
 </div>
@@ -28,9 +33,10 @@
 <div class="container">
   <form name="food_form" class="form-group" method="POST">
       {{food_form.hidden_tag()}}
-      <div class="form-group">
+      <div class="form-group" id="food-input">
         {{food_form.name.label(class="form-control-label")}}
         {{food_form.name(class="form-control form-control-lg")}}
+      </div>
     <div class="form-group">
         {{food_form.submit(class="btn btn-outline-info", value="Add Food")}}
     </div>
@@ -39,9 +45,10 @@
 <div class="container">
   <form name="drink_form" class="form-group" method="POST">
       {{drink_form.hidden_tag()}}
-      <div class="form-group">
+      <div class="form-group" id="drink-input">
         {{drink_form.name.label(class="form-control-label")}}
         {{drink_form.name(class="form-control form-control-lg")}}
+      </div>
     <div class="form-group">
         {{drink_form.submit(class="btn btn-outline-info", value="Add Drink")}}
     </div>

@@ -1,0 +1,65 @@
+.title {
+  text-align: center;
+}
+
+.date {
+  text-align: center;
+}
+
+.up-del {
+  display: flex;
+  margin-left: 15px;
+}
+
+.del {
+  padding-left: 5px;
+}
+
+.form-group {
+  display: flex;
+  margin: auto;
+}
+
+#food-input {
+  height: 1.7rem;
+  align-self: center;
+  border-radius: 5px;
+}
+
+#drink-input {
+  height: 1.7rem;
+  align-self: center;
+  border-radius: 5px;
+}
+
+.form-control-label {
+  padding-right: 3px;
+  align-self: center;
+  background-color: white;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+.jumbotron {
+  display: flexbox;
+}
+
+.page-top {
+  background-color: white;
+  border-radius: 5px;
+  width: 70%;
+  margin: 10px auto;
+  padding-bottom: 5px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  background-color: white;
+  width: 90%;
+  border-radius: 5px;
+  margin: auto;
+  padding: 5px;
+}
+
