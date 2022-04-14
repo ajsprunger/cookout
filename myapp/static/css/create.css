@@ -1,0 +1,44 @@
+.title {
+  background-color: white;
+  width: 70%;
+  border-radius: 5px;
+  margin: 10px auto 10px auto;
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.inputs {
+  background-color: white;
+  border-radius: 5px;
+  width: 90%;
+  margin: auto;
+  padding: 5px;
+}
+
+.form-control {
+  height: 1.7rem;
+  align-self: center;
+  border-radius: 5px;
+}
+
+.form-group {
+  margin: 5px;
+}
+
+.button {
+  margin-left: 15px;
+}
+
+.text-area {
+  width: 200px;
+  height: 50px;
+}
+
+.text-area-group {
+  display: flex;
+}
+
+.text-area-label {
+  align-self: center;
+  padding-right: 3px;
+}

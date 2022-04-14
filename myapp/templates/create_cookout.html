@@ -1,16 +1,18 @@
+<link rel="stylesheet" href="../static/css/create.css">
 {% extends "base.html" %}
 {% block content %}
-  <h1>creation page</h1>
+  <h1 class="title">Creation Page</h1>
     <div class="container">
       <form class="form-group" method="POST">
+        <div class="inputs">
           {{form.hidden_tag()}}
           <div class="form-group">
             {{form.name.label(class="form-control-label")}}
             {{form.name(class="form-control form-control-lg")}}
           </div>
-          <div class="form-group">
-            {{form.description.label(class="form-control-label")}}
-            {{form.description(class="form-control form-control-lg")}}
+          <div class="form-group text-area-group">
+            {{form.description.label(class="form-control-label text-area-label")}}
+            {{form.description(class="form-control text-area form-control-lg")}}
           </div>
           <div class="form-group">
             {{form.date.label(class="form-control-label")}}
@@ -24,7 +26,8 @@
             {{form.attendees.label(class="form-control-label")}}
             {{form.attendees(class="form-control form-control-lg")}}
           </div>
-        <div class="form-group">
+        </div>
+        <div class="form-group button">
             {{form.submit(class="btn btn-outline-info")}}
         </div>
       </form>
