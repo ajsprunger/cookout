@@ -8,7 +8,12 @@ With warm weather fast approaching here in Denver, I was inspired to create an a
 
 ## App Screenshots
 Cookout Index
+<br>
+<img src="https://i.imgur.com/yPA5F8j.png">
+<br>
 Cookout View Page
+<br>
+<img src="https://i.imgur.com/yPA5F8j.png">
 
 
 ## Technologies Used
@@ -32,7 +37,4 @@ Cookout View Page
 <ul>
 <li>Favicon designed using resources from Flaticon.com</li>
 <li>Hamburger Nav based on one from <a href="https://alvarotrigo.com/blog/hamburger-menu-css/">Luke Embrey</a></li>
-<li></li>
-<li></li>
-<li></li>
 </ul>
